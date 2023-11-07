@@ -1,0 +1,107 @@
+A=int(input("Select the bias:\n1. BJT\n2. MOSFET\n"))
+if(A==1):
+	a=int(input("Select the type of BJT: \n1. Fixed-bias\n2. Emitter-bias\n3. voltage-divider bias\n\t1.Exact\n\t2. Approximate\n4. collector feedback\n"))
+	if(a==1):
+		b=float(input("Enter the value of Ic="))
+		c=float(input("Enter the value of beeta(B)="))
+		Ib=b/c
+		print("Ib=",Ib)
+		Ie=(c+1)*Ib
+		print("Ie=",Ie)
+		d=float(input("Enter the value of vcc="))
+		e=float(input("Enter the value of vbe="))
+		Rb=(d-e)/Ib
+		print("Rb=",Rb)
+		f=float(input("Enter the value of vce="))
+		Rc=(d-f)/b
+		print("Rc=",Rc)
+	elif(a==2):
+		b=float(input("Enter the value of Ic="))
+		c=float(input("Enter the value of beeta(B)="))
+		Ib=b/c
+		print("Ib=",Ib)
+		Ie=(c+1)*Ib
+		print("Ie=",Ie)
+		f=float(input("Enter the value of vce="))
+		Re=f/Ie
+		print("Re=",Re)
+		Ri=(c+1)/Re
+		print("Ri=",Ri)
+		d=float(input("Enter the value of vcc="))
+		e=float(input("Enter the value of vbe="))
+		Rb=(d-e-Ie*Re)/Ib
+		print("Rb=",Rb)
+	elif(a==3):
+		a=float(input("Enter the value of R1:"))
+		b=float(input("Enter the value of R2:"))
+		Rth=(a*b/a+b)
+		print("Rth=",Rth)							              
+		c=float(input("Enter the value of vcc="))
+		Eth=(b*c)/a+b
+		print("Eth=",Eth)
+		d=float(input("Enter the value of Ic="))
+		e=float(input("Enter the value of beeta(B)=")) 
+		Ib=d/e 
+		print("Ib=",Ib)
+		Ie=(e+1)*Ib
+		print("Ie=",Ie)
+		f=float(input("Enter the value of vce="))
+		Re=f/Ie
+		print("Re=",Re)
+		Rc=(c+(d*Re)-f)/d
+		print("Rc=",Rc)
+		g=float(input("Enter the value of vbe="))
+		Ib=(Eth-g)/Rth+(e+1)*Re
+		print("Ib=",Ib)
+		vb=(b*c)/a+b
+		print("vb=",vb)
+		ve=vb-g
+		print("ve=",ve)
+		Ie=ve/Re
+		print("Ie=",Ie)
+		Ib=Ie/(e+1)
+		print("Ib=",Ib)
+		Rc=(c+(d*Re)-f)/d
+		print("Rc=",Rc)
+	elif(a==4):
+		a=float(input("Enter the value of Ic="))
+		b=float(input("Enter the value of beeta(B)="))
+		Ib=a/b
+		print("Ib=",Ib)
+		Ie=(b+1)*Ib
+		print("Ie=",Ie)
+		c=float(input("Enter the value of vce="))
+		d=float(input("Enter the value of vcc="))
+		Re=c/Ie
+		print("Re=",Re)
+		Rc=(d-(a*Re)-c)/a
+		print("Rc=",Rc)
+		e=float(input("Enter the value of vbe="))
+		Rf=(d-e-(Ib*(b*Rc)+Ib*(b*Re)))/Ib
+		print("Rf=",Rf)
+elif(A==2):
+		a=int(input("Select the type of MOSFET:\n1. Fixed MOSFET\n2. voltage-divider MOSFET\n"))
+		if(a==1):
+			a=float(input("Enter the value of vgs="))
+			b=float(input("Enter the value of vgg="))
+			c=float(input("Enter the value of vds="))
+			d=float(input("Enter the value of vdd="))
+			e=float(input("Enter the value of Id="))
+			Rs=(d-c)/e
+			print("Rs=",Rs)
+		elif(a==2):
+			a=float(input("Enter the value of R1:"))
+			b=float(input("Enter the value of R2:"))
+			c=float(input("Enter the value of vdd="))
+			vg=(b*c)/a+b
+			print("vg=",vg)
+			d=float(input("Enter the value of Is="))
+			e=float(input("Enter the value of vgs="))
+			Rs=(vg-e)/d
+			print("Rs=",Rs)
+			f=float(input("Enter the value of vds="))
+			g=float(input("Enter the value of Id="))
+			Rd=(c+(g*Rs)-f)/g
+			print("Rd=",Rd)
+			
+		
